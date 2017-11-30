@@ -53,7 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\SpawnPoint.cs" />
-     <None Include="Assets\Glyph Report.txt" />
+     <None Include="Assets\Fonts\roboto\Apache License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

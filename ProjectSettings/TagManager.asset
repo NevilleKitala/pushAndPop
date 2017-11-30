@@ -45,3 +45,9 @@ TagManager:
   - name: Player
     uniqueID: 3388583445
     locked: 0
+  - name: DeathScreen
+    uniqueID: 972151465
+    locked: 0
+  - name: DeathButtons
+    uniqueID: 4264188793
+    locked: 0

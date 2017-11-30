@@ -17,7 +17,6 @@ public class PlayerScript : MonoBehaviour {
 	public Color colorPurple;
 	public Color colorGreen;
 
-	//float score = 0.0f;
 	float waitTime =1.0f;
 	float currentTime = 0.0f;
 	float swipeResistancex = 50.0f;

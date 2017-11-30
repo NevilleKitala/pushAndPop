@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpawnPoint : MonoBehaviour {
 	public GameObject sprite;
-	float WaitTime = 0.2f;
+
 	GameObject obj = null;
 
 	public SpriteRenderer [] borders;
@@ -32,13 +32,12 @@ public class SpawnPoint : MonoBehaviour {
 	}
 
 	void Spawn(){
-		if (obj == null && WaitTime == 0.0f) {
+		if (obj == null) {
 			obj = Instantiate (sprite, transform.position, Quaternion.identity)as GameObject;
 			assignColor (borders);
 			setTextColor (text);
-		} else {
-			WaitTime -= 0.1f * Time.deltaTime;
-		}
+		} 
+
 	}
 
 	void Score (Text text){
