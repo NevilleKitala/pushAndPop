@@ -23,7 +23,9 @@ public class PlayerScript : MonoBehaviour {
 	float swipeResistancey = 100.0f;
 	float force = 500.0f;
 
-	bool right,left,up,down,gameOver = false;
+	bool right,left,up,down = false;
+	public bool gameOver = false;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -100,10 +102,10 @@ public class PlayerScript : MonoBehaviour {
 			Debug.Log("Collision");
 			if (other.GetComponent<SpriteRenderer> ().color == sr1.color) {
 				SpawnPoint.score++;
+				DestroyShape ();
 			} else {
 				gameOver = true;
 			}
-			DestroyShape ();
 		}
 	}
 

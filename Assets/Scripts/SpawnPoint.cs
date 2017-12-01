@@ -13,10 +13,14 @@ public class SpawnPoint : MonoBehaviour {
 
 	public static float score = 0.0f;
 
+	public bool over = false; 
+
 	public Color colorOrange;
 	public Color colorYellow;
 	public Color colorPurple;
 	public Color colorGreen;
+
+	public deathMenu death;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +30,11 @@ public class SpawnPoint : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		if (obj !=null && obj.GetComponent<PlayerScript> ().gameOver == true) {
+			death.setActiveMenu ();
+			death.DisplayScore (score);
+		}
+
 		Spawn ();
 		Score (text);
 

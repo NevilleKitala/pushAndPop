@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58719684431707582}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   colorYellow: {r: 0.7607844, g: 0.7294118, b: 0.5764706, a: 1}
   colorPurple: {r: 0.18039216, g: 0.11764707, b: 0.23137257, a: 1}
   colorGreen: {r: 0.21176472, g: 0.53333336, b: 0.43921572, a: 1}
+  death: {fileID: 0}
 --- !u!212 &212068779152752470
 SpriteRenderer:
   m_ObjectHideFlags: 1
