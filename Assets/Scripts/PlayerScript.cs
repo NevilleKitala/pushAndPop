@@ -6,8 +6,7 @@ public class PlayerScript : MonoBehaviour {
 
 	Vector3 touchPosition;
 
-	public GameObject [] obj;
-
+	public GameObject [] particles;
 	public Rigidbody2D rb;
 
 	public SpriteRenderer sr1;
@@ -31,8 +30,6 @@ public class PlayerScript : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		sr1 = GetComponent<SpriteRenderer> ();
 		setRandomColor (sr1);
-		for (int i = 0; i < obj.Length; i++)
-			setRandomColor (obj[i].GetComponent<SpriteRenderer>());
 	}
 	
 	// Update is called once per frame
@@ -93,7 +90,6 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 		public void DestroyShape(){
-		//Instantiate (obj, transform.position, Quaternion.identity);
 		Destroy (gameObject);
 		}
 
@@ -103,6 +99,18 @@ public class PlayerScript : MonoBehaviour {
 			if (other.GetComponent<SpriteRenderer> ().color == sr1.color) {
 				SpawnPoint.score++;
 				DestroyShape ();
+				if (sr1.color == colorOrange) {
+					Instantiate (particles[0], transform.position, Quaternion.identity);
+				}
+				else if (sr1.color == colorYellow) {
+					Instantiate (particles[1], transform.position, Quaternion.identity);
+				}
+				else if (sr1.color == colorPurple) {
+					Instantiate (particles[3], transform.position, Quaternion.identity);
+				}
+				 else if (sr1.color == colorGreen) {
+					Instantiate (particles[2], transform.position, Quaternion.identity);
+				}
 			} else {
 				gameOver = true;
 			}

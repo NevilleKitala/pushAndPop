@@ -24,7 +24,7 @@ public class SpawnPoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		score = 0.0f;
 	}
 	
 	// Update is called once per frame
