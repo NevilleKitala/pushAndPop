@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour {
 	float swipeResistancex = 50.0f;
 	float swipeResistancey = 100.0f;
 	float force = 500.0f;
+	float levelUp = 20.0f;
 
 	bool right,left,up,down = false;
 	public bool gameOver = false;
