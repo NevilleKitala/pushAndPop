@@ -11,9 +11,10 @@ public class SpawnPoint : MonoBehaviour {
 	public SpriteRenderer [] borders;
 	public Text text;
 
-	public static float score = 0.0f;
+	public float score = 0.0f;
+	public static float levelUp = 10.0f;
 
-	public bool over = false; 
+	public bool firstTouch,over = false;
 
 	public Color colorOrange;
 	public Color colorYellow;
@@ -30,14 +31,29 @@ public class SpawnPoint : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (obj !=null && obj.GetComponent<PlayerScript> ().gameOver == true) {
+		if (obj != null && obj.GetComponent<PlayerScript> ().gameOver == true)
+			over = true;
+		
+		if (obj != null && !firstTouch && score == 0.0f)
+			obj.GetComponent<PlayerScript> ().currentTime = 0.0f;
+		else if (!firstTouch && score > 0.0f)
+			firstTouch = true;
+
+		if (firstTouch && score < 1.0f && !over) {
 			death.setActiveMenu ();
 			death.DisplayScore (score);
+			death.highScore (score);
+			over = true;
 		}
 
-		Spawn ();
-		Score (text);
-
+		if (over == true) {
+			death.setActiveMenu ();
+			death.DisplayScore (score);
+			death.highScore (score);
+		}else if(!over){
+			Spawn ();
+			Score (text);
+		}
 	}
 
 	void Spawn(){

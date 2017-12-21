@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class deathMenu : MonoBehaviour {
 	public Text text;
+	public Text highscore;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,10 @@ public class deathMenu : MonoBehaviour {
 	}
 
 	public void DisplayScore(float score){
+		text.text = score.ToString();
+	}
+	public void highScore(float score){
+		
 		text.text = score.ToString();
 	}
 }

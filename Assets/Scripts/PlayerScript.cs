@@ -6,7 +6,9 @@ public class PlayerScript : MonoBehaviour {
 
 	Vector3 touchPosition;
 
+	public GameObject spawnPoint;
 	public GameObject [] particles;
+
 	public Rigidbody2D rb;
 
 	public SpriteRenderer sr1;
@@ -16,25 +18,29 @@ public class PlayerScript : MonoBehaviour {
 	public Color colorPurple;
 	public Color colorGreen;
 
-	float waitTime =1.0f;
-	float currentTime = 0.0f;
+	public float waitTime =1.0f;
+	public float  currentTime = 0.0f;
 	float swipeResistancex = 50.0f;
 	float swipeResistancey = 100.0f;
 	float force = 500.0f;
-	float levelUp = 20.0f;
 
 	bool right,left,up,down = false;
 	public bool gameOver = false;
 
+	SpawnPoint spawner;
+
 	// Use this for initialization
 	void Start () {
+		spawnPoint = GameObject.Find ("SpawnPoint");
 		rb = GetComponent<Rigidbody2D> ();
 		sr1 = GetComponent<SpriteRenderer> ();
 		setRandomColor (sr1);
+		spawner = spawnPoint.GetComponent<SpawnPoint> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		Vector3 currentMousePos = Input.mousePosition;
 		left = right = up = down = false;
 		if(Input.GetMouseButtonDown (0)){
@@ -66,8 +72,15 @@ public class PlayerScript : MonoBehaviour {
 
 		currentTime += 1 * Time.deltaTime;
 
-		if (currentTime > waitTime)
+		if (currentTime > waitTime && !gameOver) {
+			if (spawner.score > 0.0f)
+				spawner.score--;
+			else
+				gameOver = true;
+			
+			Debug.Log ("Subtract");
 			DestroyShape ();
+		}
 
 		float inputX = Input.GetAxis ("Horizontal");
 		float inputY = Input.GetAxis ("Vertical");
@@ -89,6 +102,9 @@ public class PlayerScript : MonoBehaviour {
 			inputY = 0;
 			currentTime = 0;
 		}
+
+		if (SpawnPoint.levelUp > 10.0f)
+			waitTime -= (0.010f * SpawnPoint.levelUp);
 	}
 		public void DestroyShape(){
 		Destroy (gameObject);
@@ -96,9 +112,8 @@ public class PlayerScript : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.tag == "Collision") {
-			Debug.Log("Collision");
 			if (other.GetComponent<SpriteRenderer> ().color == sr1.color) {
-				SpawnPoint.score++;
+				spawner.score++;
 				DestroyShape ();
 				if (sr1.color == colorOrange) {
 					Instantiate (particles[0], transform.position, Quaternion.identity);
