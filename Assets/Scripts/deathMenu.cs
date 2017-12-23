@@ -28,7 +28,7 @@ public class deathMenu : MonoBehaviour {
 		text.text = score.ToString();
 	}
 	public void highScore(float score){
-		
-		text.text = score.ToString();
+		highscore.text = score.ToString ();
+		PlayerPrefs.SetFloat ("Highscore", score);
 	}
 }

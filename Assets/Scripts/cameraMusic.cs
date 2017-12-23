@@ -6,6 +6,12 @@ public class cameraMusic : MonoBehaviour {
 
 	public GameObject musicPlayer;
 
+	public AudioSource audiosr;
+
+	void Start(){
+		audiosr = gameObject.GetComponent<AudioSource> ();
+	}
+		
 	void Awake() {
 		
 		musicPlayer = GameObject.Find("MainCamera");
@@ -23,5 +29,10 @@ public class cameraMusic : MonoBehaviour {
 				Destroy(this.gameObject);
 			}
 		}
+
+		if (PlayerPrefs.GetFloat ("Volume") > 0)
+			audiosr.volume = PlayerPrefs.GetFloat ("Volume");
+		else
+			audiosr.volume = 1.0f;
 	}
 }

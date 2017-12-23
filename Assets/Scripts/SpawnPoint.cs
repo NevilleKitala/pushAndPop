@@ -11,6 +11,7 @@ public class SpawnPoint : MonoBehaviour {
 	public SpriteRenderer [] borders;
 	public Text text;
 
+	public float currentPoints;
 	public float score = 0.0f;
 	public static float levelUp = 10.0f;
 
@@ -26,6 +27,7 @@ public class SpawnPoint : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		score = 0.0f;
+		levelUp = 10.0f;
 	}
 	
 	// Update is called once per frame
@@ -42,18 +44,25 @@ public class SpawnPoint : MonoBehaviour {
 		if (firstTouch && score < 1.0f && !over) {
 			death.setActiveMenu ();
 			death.DisplayScore (score);
-			death.highScore (score);
+			AddUp (score);
+			death.highScore (checkHighscore(score));
 			over = true;
 		}
 
 		if (over == true) {
 			death.setActiveMenu ();
 			death.DisplayScore (score);
-			death.highScore (score);
+			AddUp (score);
+			death.highScore (checkHighscore(score));
 		}else if(!over){
 			Spawn ();
 			Score (text);
 		}
+
+		if (score > levelUp) 
+			levelUp = levelUp * 2;
+
+		Debug.Log (levelUp * 0.1);
 	}
 
 	void Spawn(){
@@ -130,4 +139,19 @@ public class SpawnPoint : MonoBehaviour {
 		}
 	}
 
+	float checkHighscore (float score){
+		float highscore = PlayerPrefs.GetFloat ("Highscore");
+
+		if (highscore < score) {
+			PlayerPrefs.SetFloat ("Highscore", score);
+			highscore = score;
+		}
+		return highscore;
+	}
+
+	void AddUp (float score){
+		currentPoints = PlayerPrefs.GetFloat ("Points");
+		currentPoints = currentPoints + score;
+		PlayerPrefs.SetFloat ("Points", currentPoints);
+	}
 }

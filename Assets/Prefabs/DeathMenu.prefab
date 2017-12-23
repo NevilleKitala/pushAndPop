@@ -412,6 +412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 114158562923148508}
+  highscore: {fileID: 0}
+  settings: {fileID: 1738442955317500, guid: 98f021ab0a027374780d0c6363bf964b, type: 2}
 --- !u!114 &114831750765635310
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour {
 
 	Vector3 touchPosition;
 
+
 	public GameObject spawnPoint;
 	public GameObject [] particles;
 
@@ -36,6 +37,8 @@ public class PlayerScript : MonoBehaviour {
 		sr1 = GetComponent<SpriteRenderer> ();
 		setRandomColor (sr1);
 		spawner = spawnPoint.GetComponent<SpawnPoint> ();
+		if (SpawnPoint.levelUp > 10.0f)
+			waitTime -= (0.010f * SpawnPoint.levelUp);
 	}
 	
 	// Update is called once per frame
@@ -102,9 +105,7 @@ public class PlayerScript : MonoBehaviour {
 			inputY = 0;
 			currentTime = 0;
 		}
-
-		if (SpawnPoint.levelUp > 10.0f)
-			waitTime -= (0.010f * SpawnPoint.levelUp);
+			
 	}
 		public void DestroyShape(){
 		Destroy (gameObject);

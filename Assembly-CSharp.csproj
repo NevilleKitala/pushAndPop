@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\deathMenu.cs" />
      <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\Settings.cs" />
      <Compile Include="Assets\Scripts\SpawnPoint.cs" />
      <None Include="Assets\Fonts\roboto\Apache License.txt" />
  <Reference Include="UnityEngine.UI">
