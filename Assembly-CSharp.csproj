@@ -51,12 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\bulletType.cs" />
      <Compile Include="Assets\Scripts\cameraMusic.cs" />
      <Compile Include="Assets\Scripts\deathMenu.cs" />
      <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\Settings.cs" />
      <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+     <None Include="Assets\SpriteSheet\my-icons-collection\backup.txt" />
      <None Include="Assets\Fonts\roboto\Apache License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -6,7 +6,6 @@ public class PlayerScript : MonoBehaviour {
 
 	Vector3 touchPosition;
 
-
 	public GameObject spawnPoint;
 	public GameObject [] particles;
 
@@ -39,6 +38,7 @@ public class PlayerScript : MonoBehaviour {
 		spawner = spawnPoint.GetComponent<SpawnPoint> ();
 		if (SpawnPoint.levelUp > 10.0f)
 			waitTime -= (0.010f * SpawnPoint.levelUp);
+
 	}
 	
 	// Update is called once per frame
